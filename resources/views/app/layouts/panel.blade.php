@@ -27,42 +27,52 @@
 
     @stack('css')
     <style>
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link .menu-title {
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title{
             color: #5d2fc2;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link .menu-icon{
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon i{
             color: #5d2fc2;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link .menu-arrow{
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-link .menu-title {
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-link .menu-icon i{
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-link .menu-arrow{
             color: #5d2fc2;
         }
         [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-link.active {
             background-color: #5d2fc2;
             color: #fff;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-sub 
-        /* .menu-link.active .menu-title  */
-        {
-            background-color: #fff;
-        }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-sub 
-        /* .menu-link.active .menu-icon */
-        {
-            background-color: #fff;
-        }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-sub 
-        /* .menu-link.active .menu-arrow */
-        {
-            background-color: #fff;
-        }
         [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-title {
             color: #fff;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-icon{
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-icon i{
             color: #fff;
         }
         [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-arrow{
             color: #fff;
+        }
+
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link .menu-title {
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link .menu-icon i{
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link .menu-arrow{
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-sub .menu-item .menu-link .menu-title {
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-sub .menu-item .menu-link .menu-icon i{
+            color: #5d2fc2;
+        }
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item .menu-sub .menu-item .menu-link .menu-arrow{
+            color: #5d2fc2;
         }
 
     </style>

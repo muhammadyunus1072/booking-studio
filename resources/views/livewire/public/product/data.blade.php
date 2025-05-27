@@ -4,7 +4,7 @@
         <div class="card text-white card-has-bg click-col" style="background-image: url('{{ $item->image_url()}}');">
            <div class="card-img-overlay d-flex flex-column" style="background: linear-gradient(0deg,
 			rgba(31, 49, 60, 0.379) 0%,
-			#8662e8 100%)">
+			#8662e8 160%)">
               <div class="card-body">
                 <a target="_blank" href="https://www.google.com/maps?q={{ $item->studio->latitude.','.$item->studio->longitude }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="{{$item->studio->address}}" data-kt-initialized="1">
                     <p class="card-meta mb-1" style="color:#fecb6e;"><i class="fa-solid fa-location-dot" style="color:#fecb6e;"></i> {{$item->studio->name}} - {{$item->studio->city}}</p>
