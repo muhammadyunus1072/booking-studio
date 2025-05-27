@@ -40,13 +40,13 @@
             background-color: #5d2fc2;
             color: #fff;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-sub .menu-link.active .menu-title {
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-sub .menu-link .menu-title {
             color: #fff;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-sub .menu-link.active .menu-icon{
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-sub .menu-link .menu-icon{
             color: #fff;
         }
-        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-sub .menu-link.active .menu-arrow{
+        [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-sub .menu-link .menu-arrow{
             color: #fff;
         }
         [data-kt-app-layout=dark-sidebar] .app-sidebar .menu>.menu-item.here>.menu-link.active .menu-title {
