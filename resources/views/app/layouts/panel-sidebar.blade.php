@@ -37,7 +37,7 @@
                                     </span>
                                 @endif
                                 <span class="menu-title">
-                                    {{ $menu['text'] }}
+                                    HALO {{ $menu['text'] }}
                                     <label class='badge-notification badge bg-danger ms-3'></label>
                                 </span>
                                 <span class="menu-arrow"></span>
