@@ -19,7 +19,7 @@ class PublicController extends Controller
     public function get_api_users(Request $request)
     {
         // $page = $request->page ?? null;
-        $users = UserRepository::datatable(1)->paginate(10);
+        $users = UserRepository::datatable('Seluruh')->paginate(10);
         $users->getCollection()->transform(function ($user) {
             $user->first_name = "first $user->name";
             $user->last_name = "last $user->name";
