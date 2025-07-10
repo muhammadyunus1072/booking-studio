@@ -23,7 +23,7 @@ class PublicController extends Controller
         $users->getCollection()->transform(function ($user) {
             $user->first_name = "first $user->name";
             $user->last_name = "last $user->name";
-            $user->avatar = 'https://reqres.in/img/faces/10-image.jpg';
+            $user->avatar = 'https://reqres.in/img/faces/'.rand(1, 10).'-image.jpg';
             return $user;
         });
 
