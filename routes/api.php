@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/xendit/callback', [PublicController::class, 'handleCallback']);
-Route::get('/users', [PublicController::class, 'get_api_users']);
+// Route::get('/users', [PublicController::class, 'get_api_users']);
 
