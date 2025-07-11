@@ -80,7 +80,7 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
         $user = UserRepository::create([
-            'username' => $validated['username'],
+            'name' => $validated['username'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
             'password' => Hash::make($validated['password']),
