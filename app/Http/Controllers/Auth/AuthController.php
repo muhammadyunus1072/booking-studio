@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Repositories\Account\UserRepository;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -66,5 +67,30 @@ class AuthController extends Controller
         Auth::logout();
         session()->flush();
         return redirect()->route('login');
+    }
+
+    // API
+    // App\Http\Controllers\AuthController.php
+    public function register_api(Request $request)
+    {
+        $validated = $request->validate([
+            'username' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|string',
+            'password' => 'required|min:6',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['username'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Registrasi berhasil',
+            'data' => $user,
+        ], 201);
     }
 }
