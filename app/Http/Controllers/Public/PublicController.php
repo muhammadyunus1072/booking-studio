@@ -19,11 +19,11 @@ class PublicController extends Controller
     public function get_api_users(Request $request)
     {
         // $page = $request->page ?? null;
-        $users = UserRepository::datatable('Seluruh')->paginate(10);
+        $users = UserRepository::datatable('Seluruh')->orderBy('id', 'DESC')->paginate(10);
         $users->getCollection()->transform(function ($user) {
             $user->first_name = "first $user->name";
             $user->last_name = "last $user->name";
-            $user->avatar = 'https://reqres.in/img/faces/'.rand(1, 10).'-image.jpg';
+            $user->avatar = 'https://reqres.in/img/faces/' . rand(1, 10) . '-image.jpg';
             return $user;
         });
 
@@ -52,16 +52,15 @@ class PublicController extends Controller
     {
         return view('app.public.contact.index');
     }
-    
+
     public function generate(Request $request)
     {
         try {
             $transaction = TransactionRepository::findBy([
                 ['id', Crypt::decrypt($request->id)]
             ]);
-            
-            if(!$transaction || $transaction->status !== Transaction::STATUS_PAID || !$transaction->booking_code)
-            {
+
+            if (!$transaction || $transaction->status !== Transaction::STATUS_PAID || !$transaction->booking_code) {
                 return redirect()->route('public.index');
             }
             $qrCode = QrCode::size(400)->generate($transaction->booking_code);
@@ -71,16 +70,16 @@ class PublicController extends Controller
             return redirect()->route('public.index');
         }
     }
-    
+
     public function product_booking(Request $request)
     {
         return view('app.public.product-booking.detail', ["objId" => $request->id]);
     }
-    
+
     public function booking_review(Request $request)
     {
         $bookingSession = session('booking_data');
-        if(!$bookingSession) {
+        if (!$bookingSession) {
             return redirect()->route('public.index');
         }
         return view('app.public.booking-review.detail', ["objId" => $request->id]);
@@ -121,24 +120,24 @@ class PublicController extends Controller
                         Log::info("Transaction expired: $invoiceExternalId", ['transaction_id' => $transaction->id]);
                     }
                     break;
-        
+
                 case 'PAID':
                     // If the payment is late (after expiry), update it to paid
                     if ($transaction->status === Transaction::STATUS_EXPIRED) {
                         Log::info("Late payment received for expired invoice: $invoiceExternalId", ['transaction_id' => $transaction->id]);
                     }
-        
+
                     $transaction->status = Transaction::STATUS_PAID;
                     $transaction->booking_code = substr(strtoupper(md5(uniqid() . 1)), 0, 3) . str_pad($transaction->id, 4, '0', STR_PAD_LEFT);;
                     $transaction->scanned_at = null;
                     $transaction->save();
-        
+
                     // Trigger event for further processing (e.g., email confirmation)
                     // event(new TransactionPaidProcessed($transaction));
                     break;
-                }
+            }
             Log::info("Transaction updated: Invoice ID $invoiceExternalId, Status: $transaction->status");
-            
+
             DB::commit();
             return response()->json(['message' => 'Callback received successfully'], 200);
         } catch (\Exception $e) {
