@@ -68,29 +68,4 @@ class AuthController extends Controller
         session()->flush();
         return redirect()->route('login');
     }
-
-    // API
-    // App\Http\Controllers\AuthController.php
-    public function register_api(Request $request)
-    {
-        $validated = $request->validate([
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|string',
-            'password' => 'required|min:6',
-        ]);
-        $user = UserRepository::create([
-            'username' => $validated['username'],
-            'name' => $validated['username'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone'],
-            'password' => Hash::make($validated['password']),
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Registrasi berhasil',
-            'data' => $user,
-        ], 201);
-    }
 }

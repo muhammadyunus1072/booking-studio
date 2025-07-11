@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\ApiAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Public\PublicController;
 
 /*
@@ -17,7 +17,6 @@ use App\Http\Controllers\Public\PublicController;
 */
 
 Route::post('/xendit/callback', [PublicController::class, 'handleCallback']);
-Route::get('/users', [PublicController::class, 'get_api_users']);
-Route::post('/register', [AuthController::class, 'register_api']);
-
-
+Route::get('/users', [ApiAuthController::class, 'get_users']);
+Route::post('/register', [ApiAuthController::class, 'register']);
+Route::post('/login', [ApiAuthController::class, 'login']);

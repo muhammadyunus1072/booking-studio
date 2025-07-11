@@ -16,25 +16,6 @@ use App\Repositories\Transaction\Transaction\TransactionRepository;
 
 class PublicController extends Controller
 {
-    public function get_api_users(Request $request)
-    {
-        // $page = $request->page ?? null;
-        $users = UserRepository::datatable('Seluruh')->orderBy('id', 'DESC')->paginate(10);
-        $users->getCollection()->transform(function ($user) {
-            $user->first_name = "first $user->name";
-            $user->last_name = "last $user->name";
-            $user->avatar = 'https://reqres.in/img/faces/' . rand(1, 10) . '-image.jpg';
-            return $user;
-        });
-
-        return response()->json([
-            'success' => true,
-            'current_page' => $users->currentPage(),
-            'last_page' => $users->lastPage(),
-            'total' => $users->total(),
-            'data' => $users->items(),
-        ]);
-    }
     public function index()
     {
         // return RomanConverter::toRoman(12);
