@@ -74,7 +74,7 @@ class AuthController extends Controller
     public function register_api(Request $request)
     {
         $validated = $request->validate([
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string',
             'password' => 'required|min:6',
