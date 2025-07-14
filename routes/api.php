@@ -20,3 +20,4 @@ Route::post('/xendit/callback', [PublicController::class, 'handleCallback']);
 Route::get('/users', [ApiAuthController::class, 'get_users']);
 Route::post('/register', [ApiAuthController::class, 'register']);
 Route::post('/login', [ApiAuthController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/profile/photo', [ApiAuthController::class, 'upload']);

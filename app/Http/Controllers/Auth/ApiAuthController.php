@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\FilePathHelper;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -51,6 +52,25 @@ class ApiAuthController extends Controller
             'user' => $user,
         ]);
     }
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $path = $request->file('photo')->store(FilePathHelper::FILE_API_UPLOAD_PHOTO, 'public');
+
+        $user = $request->user();
+        logger($user);
+        $user->photo = $path;
+        $user->save();
+
+        return response()->json([
+            'message' => 'Upload berhasil',
+            'photo_url' => asset('storage/' . $path),
+        ]);
+    }
+
     // API
     // App\Http\Controllers\AuthController.php
     public function register(Request $request)
