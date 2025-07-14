@@ -20,7 +20,7 @@ class ApiAuthController extends Controller
         $users->getCollection()->transform(function ($user) {
             $user->first_name = "first $user->name";
             $user->last_name = "last $user->name";
-            $user->avatar = 'https://reqres.in/img/faces/' . rand(1, 10) . '-image.jpg';
+            $user->avatar = $user->photo ? asset('storage/' . $user->photo) : 'https://reqres.in/img/faces/' . rand(1, 10) . '-image.jpg';
             return $user;
         });
 
