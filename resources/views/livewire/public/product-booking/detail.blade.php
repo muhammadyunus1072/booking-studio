@@ -141,14 +141,14 @@
       <div class="form-check form-check-custom form-check-solid form-check-sm my-3">
          <input class="form-check-input" type="checkbox" style="border: 1px solid #ccc; border-color: black;" id="follow-checkbox">
          <label class="form-check-label d-flex align-items-center text-start" for="wajib-follow">
-            Saya menyetujui untuk tag story instagram @Kuystudio dan pengisian Quizioner untuk mendapatkan SOFTCOPY GRATIS
+            Saya menyetujui untuk tag story instagram @ dan pengisian Quizioner untuk mendapatkan SOFTCOPY GRATIS
          </label>
       </div>
 
       <div class="form-check form-check-custom form-check-solid form-check-sm my-3">
          <input class="form-check-input" type="checkbox" style="border: 1px solid #ccc; border-color: black;" id="agreement_photo_usage_checkbox">
          <label class="form-check-label d-flex align-items-center text-start" for="agreement_photo_usage">
-            Saya setuju dan secara sukarela mengizinkan jika hasil foto Saya di Kuy Studio dapat digunakan untuk keperluan promosi dan konten di Kuy Studio.
+            Saya setuju dan secara sukarela mengizinkan jika hasil foto Saya di dapat digunakan untuk keperluan promosi dan konten di .
          </label>
       </div>
    </div>
