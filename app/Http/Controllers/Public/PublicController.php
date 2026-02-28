@@ -40,7 +40,6 @@ class PublicController extends Controller
             $transaction = TransactionRepository::findBy([
                 ['id', Crypt::decrypt($request->id)]
             ]);
-
             if (!$transaction || $transaction->status !== Transaction::STATUS_PAID || !$transaction->booking_code) {
                 return redirect()->route('public.index');
             }
@@ -109,7 +108,7 @@ class PublicController extends Controller
                     }
 
                     $transaction->status = Transaction::STATUS_PAID;
-                    $transaction->booking_code = substr(strtoupper(md5(uniqid() . 1)), 0, 3) . str_pad($transaction->id, 4, '0', STR_PAD_LEFT);;
+                    $transaction->booking_code = substr(strtoupper(md5(uniqid() . 1)), 0, 3) . str_pad($transaction->id, 4, '0', STR_PAD_LEFT);
                     $transaction->scanned_at = null;
                     $transaction->save();
 
